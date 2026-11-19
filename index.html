@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>河內聖誕小旅行 · 行程手冊</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#A7281F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="河內行程">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{
+--sand: #F3ECDF;
+--sand-deep: #E8DCC5;
+--ink: #2A2420;
+--ink-soft: #6B6155;
+--rust: #A7281F;
+--rust-deep: #7E1C15;
+--sky: #2B6C8A;
+--sky-deep: #1E5068;
+--felt: #C28A1C;
+--seoul: #2F6B57;
+--seoul-deep: #23513F;
+--card: #FBF7EE;
+--line: rgba(42,36,32,0.12);
+--ok: #2F6B57;
+}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+margin:0;
+background:var(--sand);
+color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Microsoft JhengHei",sans-serif;
+line-height:1.5;
+padding-bottom:60px;
+}
+.display{
+font-family:Georgia,"Noto Serif TC",serif;
+letter-spacing:0.01em;
+}
+.mono{
+font-family:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+}
+
+/* ---------- HERO ---------- */
+header.hero{
+position:relative;
+padding:34px 20px 26px;
+background:
+radial-gradient(ellipse at 20% -10%, rgba(181,80,45,0.18), transparent 55%),
+linear-gradient(180deg, var(--sand-deep) 0%, var(--sand) 100%);
+border-bottom:1px solid var(--line);
+overflow:hidden;
+}
+.hero-eyebrow{
+font-size:12px;
+letter-spacing:0.18em;
+text-transform:uppercase;
+color:var(--ink-soft);
+margin-bottom:6px;
+}
+.hero-title{
+font-size:28px;
+font-weight:700;
+margin:0 0 4px;
+color:var(--ink);
+}
+.hero-sub{
+font-size:14px;
+color:var(--ink-soft);
+margin-bottom:22px;
+}
+.countdown{
+display:flex;
+align-items:baseline;
+gap:10px;
+margin-bottom:18px;
+}
+.countdown .num{
+font-size:52px;
+font-weight:700;
+line-height:1;
+color:var(--rust);
+}
+.countdown .label{
+font-size:13px;
+color:var(--ink-soft);
+}
+/* horizon progress */
+.horizon{
+position:relative;
+height:34px;
+border-radius:17px;
+background:var(--sand-deep);
+border:1px solid var(--line);
+overflow:hidden;
+}
+.horizon-fill{
+position:absolute; left:0; top:0; bottom:0;
+background:linear-gradient(90deg, var(--sky-deep), var(--sky) 55%, var(--rust) 100%);
+border-radius:17px 0 0 17px;
+}
+.horizon-marker{
+position:absolute;
+top:50%; transform:translate(-50%,-50%);
+width:12px;height:12px;border-radius:50%;
+background:var(--card);
+border:2px solid var(--ink);
+}
+.horizon-dates{
+display:flex;justify-content:space-between;
+font-size:11px;color:var(--ink-soft);
+margin-top:6px;
+}
+.members-row{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-bottom:20px;
+}
+.member-chip{
+display:inline-flex;
+align-items:center;
+gap:5px;
+font-size:12.5px;
+font-weight:600;
+color:var(--ink);
+background:var(--card);
+border:1px solid var(--line);
+padding:5px 12px;
+border-radius:20px;
+box-shadow:0 1px 2px rgba(43,38,34,0.05);
+}
+
+/* ---------- TABS ---------- */
+nav.tabs{
+position:sticky; top:0; z-index:20;
+display:flex;
+background:var(--sand);
+border-bottom:1px solid var(--line);
+padding:0 12px;
+}
+nav.tabs button{
+flex:1;
+border:none;background:none;
+font-size:14px;font-weight:600;
+color:var(--ink-soft);
+padding:14px 6px 12px;
+cursor:pointer;
+border-bottom:3px solid transparent;
+font-family:inherit;
+transition:color .15s;
+}
+nav.tabs button.active{
+color:var(--ink);
+border-bottom-color:var(--rust);
+}
+nav.tabs .badge{
+display:inline-block;
+min-width:16px;height:16px;padding:0 4px;
+border-radius:8px;
+background:var(--rust);
+color:#fff;
+font-size:10px;font-weight:700;
+line-height:16px;text-align:center;
+margin-left:5px;
+vertical-align:2px;
+}
+
+main{padding:18px 16px 10px; max-width:640px; margin:0 auto;}
+.panel{display:none;}
+.panel.active{display:block;}
+
+/* ---------- ticket-stub day card ---------- */
+.day{
+position:relative;
+background:var(--card);
+border:1px solid var(--line);
+border-radius:14px;
+margin-bottom:14px;
+box-shadow:0 1px 2px rgba(43,38,34,0.05);
+overflow:hidden;
+}
+.day.today{
+box-shadow:0 0 0 2px var(--rust);
+}
+.day-head{
+display:flex; align-items:center; gap:12px;
+padding:14px 16px;
+cursor:pointer;
+-webkit-tap-highlight-color:transparent;
+}
+.day-date{
+font-family:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+font-size:20px;font-weight:700;
+color:var(--ink);
+min-width:52px;
+}
+.day-meta{flex:1;min-width:0;}
+.day-title{font-size:15px;font-weight:700;color:var(--ink);}
+.day-loc{font-size:12px;color:var(--ink-soft); margin-top:2px;}
+.day-loc a.map-pin{
+color:var(--sky-deep);
+text-decoration:none;
+margin-left:4px;
+}
+.day-tag{
+font-size:10px;font-weight:700;letter-spacing:.04em;
+padding:3px 8px;border-radius:20px;color:#fff;
+white-space:nowrap;
+text-transform:uppercase;
+}
+.chev{
+font-size:12px;color:var(--ink-soft);
+transition:transform .2s;
+}
+.day.open .chev{transform:rotate(180deg);}
+.day-body{
+display:none;
+padding:0 16px 16px 16px;
+border-top:1px dashed var(--line);
+}
+.day.open .day-body{display:block;padding-top:14px;}
+.day-body h4{
+font-size:11px;text-transform:uppercase;letter-spacing:.06em;
+color:var(--ink-soft); margin:14px 0 6px;
+}
+.day-body h4:first-child{margin-top:0;}
+.day-body ul{margin:0;padding-left:18px;font-size:13.5px;}
+.day-body li{margin-bottom:4px;}
+.map-links{margin:0;padding-left:0;list-style:none;}
+.map-links li{margin-bottom:5px;}
+.map-links a{
+display:inline-flex;align-items:center;gap:5px;
+font-size:13px;color:var(--sky-deep);
+text-decoration:none;
+background:var(--sand);
+padding:5px 10px;border-radius:8px;
+border:1px solid var(--line);
+}
+.map-links a:hover{background:var(--sand-deep);}
+.hotel-line{
+display:flex;align-items:center;gap:6px;
+font-size:13px; color:var(--ink);
+background:var(--sand);
+padding:8px 10px;border-radius:8px;
+margin-top:2px;
+}
+.note{
+font-size:12.5px;color:var(--rust-deep);
+background:rgba(181,80,45,0.08);
+border-left:3px solid var(--rust);
+padding:8px 10px;border-radius:0 8px 8px 0;
+margin-top:10px;
+}
+
+/* segment perforation divider */
+.segment-label{
+display:flex;align-items:center;gap:10px;
+margin:22px 0 10px;
+font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+color:var(--ink-soft);
+}
+.segment-label::before, .segment-label::after{
+content:"";flex:1;height:1px;background:var(--line);
+}
+
+/* ---------- todo tab ---------- */
+.todo-group{margin-bottom:22px;}
+.todo-group h3{
+font-size:13px;text-transform:uppercase;letter-spacing:.06em;
+color:var(--ink-soft);
+display:flex;align-items:center;gap:8px;
+margin-bottom:8px;
+}
+.todo-group h3 .count{
+font-family:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+font-size:11px; color:var(--ink);
+background:var(--sand-deep);
+padding:1px 7px;border-radius:10px;
+}
+.todo-item{
+display:flex; align-items:flex-start; gap:10px;
+background:var(--card);
+border:1px solid var(--line);
+border-radius:10px;
+padding:11px 12px;
+margin-bottom:7px;
+}
+.todo-item input[type=checkbox]{
+margin-top:2px;
+width:18px;height:18px;flex-shrink:0;
+accent-color: var(--ok);
+}
+.todo-text{font-size:13.5px;flex:1;}
+.todo-item.checked .todo-text{
+color:var(--ink-soft);
+text-decoration:line-through;
+}
+.todo-sub{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:2px;font-weight:400;text-decoration:none;}
+
+/* ---------- info tab ---------- */
+.info-card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:12px;
+padding:14px 16px;
+margin-bottom:12px;
+}
+.info-card h3{margin:0 0 8px;font-size:14px;}
+.info-card p, .info-card ul{font-size:13.5px;margin:4px 0;}
+.info-card ul{padding-left:18px;}
+.info-card a{color:var(--sky-deep);}
+
+.reset-row{
+text-align:center;padding:18px 0 4px;
+}
+.reset-row button{
+font-family:inherit;
+background:none;border:1px solid var(--line);
+color:var(--ink-soft);font-size:12px;
+padding:8px 14px;border-radius:20px;cursor:pointer;
+}
+
+/* ---------- MAP TAB ---------- */
+.map-toolbar{
+display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap;
+}
+.map-toolbar button{
+font-family:inherit;
+font-size:12.5px; font-weight:600;
+color:var(--ink);
+background:var(--card);
+border:1px solid var(--line);
+padding:7px 14px;
+border-radius:20px;
+cursor:pointer;
+}
+.map-toolbar button.active{
+background:var(--ink);
+color:#fff;
+border-color:var(--ink);
+}
+#tripMap{
+width:100%;
+height:min(62vh, 480px);
+border-radius:14px;
+border:1px solid var(--line);
+background:var(--sand-deep);
+}
+.map-legend{
+display:flex; flex-wrap:wrap; gap:10px 14px;
+margin-top:10px;
+font-size:12px; color:var(--ink-soft);
+}
+.map-legend span{display:inline-flex; align-items:center; gap:5px;}
+.map-legend i{
+width:10px;height:10px;border-radius:50%;display:inline-block;
+}
+.leaflet-popup-content-wrapper{
+border-radius:10px;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Microsoft JhengHei",sans-serif;
+}
+.popup-day{font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em;}
+.popup-title{font-size:14px;font-weight:700;color:var(--ink);margin:2px 0 4px;}
+.popup-note{font-size:12px;color:var(--ink-soft);}
+.day-list-group{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:12px;
+padding:12px 14px;
+margin-bottom:10px;
+cursor:pointer;
+}
+.day-list-group:active{background:var(--sand-deep);}
+.day-list-head{
+display:flex; align-items:center; gap:10px;
+}
+.day-list-date{
+font-family:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+font-size:14px; font-weight:700; color:var(--ink);
+min-width:44px;
+}
+.day-list-title{font-size:13.5px; font-weight:700; color:var(--ink); flex:1;}
+.day-list-tag{
+width:9px;height:9px;border-radius:50%;flex-shrink:0;
+}
+.day-list-points{
+margin:8px 0 0; padding-left:0;
+font-size:12.5px; color:var(--ink-soft);
+list-style:none;
+}
+.day-list-points li{margin-bottom:4px;}
+.day-list-points a{
+color:var(--sky-deep);
+text-decoration:none;
+}
+.day-list-points a:hover{text-decoration:underline;}
+
+/* ---------- TRANSLATE TAB ---------- */
+.translate-card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:14px;
+padding:16px;
+}
+.lang-row{
+display:flex; align-items:center; gap:10px;
+margin-bottom:12px;
+}
+.lang-row select{
+flex:1;
+font-family:inherit;
+font-size:13.5px; font-weight:600;
+color:var(--ink);
+background:var(--sand);
+border:1px solid var(--line);
+border-radius:10px;
+padding:9px 10px;
+appearance:none;
+}
+.swap-btn{
+width:34px;height:34px;flex-shrink:0;
+border-radius:50%;
+border:1px solid var(--line);
+background:var(--sand);
+color:var(--ink);
+font-size:15px;
+cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+}
+.swap-btn:active{background:var(--sand-deep);}
+#translateInput{
+width:100%;
+min-height:90px;
+font-family:inherit;
+font-size:14.5px;
+color:var(--ink);
+background:var(--sand);
+border:1px solid var(--line);
+border-radius:10px;
+padding:12px;
+resize:vertical;
+box-sizing:border-box;
+}
+.translate-btn{
+width:100%;
+margin-top:10px;
+font-family:inherit;
+font-size:14px; font-weight:700;
+color:#fff;
+background:var(--rust);
+border:none;
+border-radius:10px;
+padding:12px;
+cursor:pointer;
+}
+.translate-btn:active{opacity:.85;}
+.translate-result{
+margin-top:14px;
+background:var(--sand);
+border:1px solid var(--line);
+border-radius:10px;
+padding:14px;
+font-size:15px;
+color:var(--ink);
+min-height:28px;
+white-space:pre-wrap;
+position:relative;
+}
+.translate-result.placeholder{color:var(--ink-soft); font-size:13px;}
+.copy-btn{
+position:absolute; top:8px; right:8px;
+font-size:11px; font-weight:700;
+color:var(--ink-soft);
+background:transparent;
+border:1px solid var(--line);
+border-radius:8px;
+padding:4px 8px;
+cursor:pointer;
+}
+.translate-note{
+margin-top:10px;
+font-size:11.5px;
+color:var(--ink-soft);
+}
+.phrasebook-cat{
+font-size:13px; font-weight:700; color:var(--ink);
+margin:22px 0 10px;
+}
+.phrase-item{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:10px;
+padding:10px 12px;
+margin-bottom:8px;
+}
+.phrase-zh{font-size:13.5px; font-weight:700; color:var(--ink);}
+.phrase-local{font-size:14px; color:var(--rust); margin-top:3px; font-weight:600;}
+.phrase-pron{font-size:11.5px; color:var(--ink-soft); margin-top:2px;}
+
+.input-row{
+display:flex; gap:8px; align-items:flex-end;
+}
+.input-row textarea{flex:1;}
+.mic-btn{
+width:44px;height:44px;flex-shrink:0;
+border-radius:50%;
+border:1px solid var(--line);
+background:var(--sand);
+color:var(--ink);
+font-size:18px;
+cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+}
+.mic-btn.recording{
+background:var(--rust);
+color:#fff;
+animation:pulse 1.2s infinite;
+}
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(181,80,45,.5);}
+70%{box-shadow:0 0 0 10px rgba(181,80,45,0);}
+100%{box-shadow:0 0 0 0 rgba(181,80,45,0);}
+}
+.speak-btn{
+font-size:13px;
+color:var(--ink-soft);
+background:transparent;
+border:1px solid var(--line);
+border-radius:8px;
+padding:4px 8px;
+cursor:pointer;
+flex-shrink:0;
+}
+.speak-btn:active{background:var(--sand-deep);}
+.phrase-item{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+.phrase-text{flex:1; min-width:0;}
+
+/* ---------- SEARCH ---------- */
+.search-wrap{
+position:sticky; top:0; z-index:19;
+background:var(--sand);
+border-bottom:1px solid var(--line);
+padding:10px 0;
+}
+.search-inner{max-width:640px;margin:0 auto;padding:0 16px;position:relative;}
+.search-input-box{position:relative;}
+.search-input-box input{
+width:100%;
+font-family:inherit;
+font-size:14px;
+color:var(--ink);
+background:var(--card);
+border:1px solid var(--line);
+border-radius:20px;
+padding:10px 36px 10px 14px;
+box-sizing:border-box;
+-webkit-appearance:none;
+}
+.search-input-box input::-webkit-search-cancel-button{display:none;}
+.search-clear-btn{
+position:absolute; right:8px; top:50%; transform:translateY(-50%);
+width:24px;height:24px;border-radius:50%;
+border:none;background:var(--sand-deep);color:var(--ink-soft);
+font-size:12px;cursor:pointer;
+display:flex;align-items:center;justify-content:center;
+}
+.search-results{
+display:none;
+max-height:min(60vh,420px);
+overflow-y:auto;
+background:var(--card);
+border:1px solid var(--line);
+border-radius:12px;
+margin-top:8px;
+box-shadow:0 4px 14px rgba(43,38,34,0.12);
+}
+.search-results.show{display:block;}
+.search-result{
+display:flex; align-items:flex-start; gap:10px;
+padding:10px 12px;
+border-bottom:1px solid var(--line);
+cursor:pointer;
+}
+.search-result:last-child{border-bottom:none;}
+.search-result:active{background:var(--sand);}
+.search-result-cat{
+flex-shrink:0;
+font-size:10px;font-weight:700;
+color:#fff;
+padding:3px 7px;border-radius:10px;
+white-space:nowrap;
+margin-top:1px;
+}
+.search-result-title{font-size:13.5px;font-weight:600;color:var(--ink);}
+.search-result-sub{font-size:11.5px;color:var(--ink-soft);margin-top:2px;}
+.search-empty{padding:14px;font-size:13px;color:var(--ink-soft);text-align:center;}
+.search-hit{animation:searchFlash 1.6s ease;}
+@keyframes searchFlash{
+0%{box-shadow:0 0 0 3px var(--rust);}
+70%{box-shadow:0 0 0 3px var(--rust);}
+100%{box-shadow:0 0 0 0 rgba(181,80,45,0);}
+}
+/* ---------- Hanoi additions ---------- */
+header.hero{background:
+radial-gradient(ellipse at 85% -10%, rgba(194,138,28,0.22), transparent 55%),
+radial-gradient(ellipse at 10% -20%, rgba(167,40,31,0.18), transparent 55%),
+linear-gradient(180deg, var(--sand-deep) 0%, var(--sand) 100%);}
+.horizon-fill{background:linear-gradient(90deg, var(--seoul-deep), var(--sky) 50%, var(--rust) 100%);}
+.day-week{font-size:11px;font-weight:600;color:var(--ink-soft);margin-top:1px;}
+nav.tabs{padding:0 4px;overflow-x:auto;}
+nav.tabs button{font-size:13.5px;padding:14px 4px 12px;white-space:nowrap;}
+#toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;
+background:var(--ink);color:#fff;font-size:13px;padding:10px 16px;border-radius:12px;max-width:88vw;text-align:center;
+transition:opacity .2s, transform .2s;z-index:50;}
+#toast.show{opacity:1;transform:translate(-50%,0);}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+</head>
+<body>
+
+<header class="hero">
+<div class="hero-eyebrow">HANOI · HA LONG BAY</div>
+<h1 class="hero-title display">河內聖誕小旅行</h1>
+<div class="hero-sub">2026/12/23 – 12/29 河內・下龍灣</div>
+
+<div class="countdown">
+<div class="num mono" id="countdownNum">--</div>
+<div class="label" id="countdownLabel">計算中…</div>
+</div>
+
+<div class="horizon">
+<div class="horizon-fill" id="horizonFill"></div>
+<div class="horizon-marker" id="horizonMarker"></div>
+</div>
+<div class="horizon-dates">
+<span>12/23 出發</span>
+<span>12/29 回台</span>
+</div>
+</header>
+
+<nav class="tabs">
+<button class="tab-btn active" data-tab="itinerary">行程</button>
+<button class="tab-btn" data-tab="todo">待辦<span class="badge" id="todoBadge">0</span></button>
+<button class="tab-btn" data-tab="packing">行李<span class="badge" id="packingBadge">0</span></button>
+<button class="tab-btn" data-tab="map">地圖</button>
+<button class="tab-btn" data-tab="translate">翻譯</button>
+<button class="tab-btn" data-tab="info">資訊</button>
+</nav>
+
+<div class="search-wrap" id="searchWrap">
+<div class="search-inner">
+<div class="search-input-box">
+<input type="search" id="globalSearch" placeholder="🔍 搜尋行程、待辦、行李、實用資訊…" autocomplete="off">
+<button id="searchClear" class="search-clear-btn" style="display:none;" title="清除">✕</button>
+</div>
+<div id="searchResults" class="search-results"></div>
+</div>
+</div>
+
+<main>
+
+<!-- ================= ITINERARY ================= -->
+<section class="panel active" id="panel-itinerary"></section>
+
+<!-- ================= TODO ================= -->
+<section class="panel" id="panel-todo">
+<div class="reset-row" style="text-align:left;padding-top:0;margin-bottom:10px;">
+<span style="font-size:12.5px;color:var(--ink-soft);">勾選的項目會自動儲存在這台裝置上</span>
+</div>
+<div id="todoContainer"></div>
+<div class="reset-row"><button id="resetTodos">清除所有勾選紀錄</button></div>
+</section>
+
+<!-- ================= PACKING ================= -->
+<section class="panel" id="panel-packing">
+<div class="reset-row" style="text-align:left;padding-top:0;margin-bottom:10px;">
+<span style="font-size:12.5px;color:var(--ink-soft);">勾選的項目會自動儲存在這台裝置上</span>
+</div>
+<div id="packingContainer"></div>
+<div class="reset-row"><button id="resetPacking">清除所有勾選紀錄</button></div>
+</section>
+
+<!-- ================= MAP ================= -->
+<section class="panel" id="panel-map">
+<div class="map-toolbar">
+<button data-view="all" class="active">全部</button>
+<button data-view="hanoi">河內市區</button>
+<button data-view="halong">下龍灣</button>
+</div>
+<div id="tripMap"></div>
+<div class="map-legend">
+<span><i style="background:#A7281F"></i>還劍湖／老城</span>
+<span><i style="background:#2F6B57"></i>巴亭區／西湖</span>
+<span><i style="background:#2B6C8A"></i>下龍灣</span>
+<span><i style="background:#C28A1C"></i>博物館</span>
+</div>
+<div id="dayList" style="margin-top:18px;"></div>
+</section>
+
+<!-- ================= TRANSLATE ================= -->
+<section class="panel" id="panel-translate">
+<div class="translate-card">
+<div class="lang-row">
+<select id="langFrom">
+<option value="zh-TW">中文</option>
+<option value="vi">越南文</option>
+<option value="en">英文</option>
+</select>
+<button class="swap-btn" id="swapLangBtn" title="交換語言">⇄</button>
+<select id="langTo">
+<option value="vi">越南文</option>
+<option value="zh-TW">中文</option>
+<option value="en">英文</option>
+</select>
+</div>
+<div class="input-row">
+<textarea id="translateInput" placeholder="輸入想翻譯的文字，或按🎤錄音…"></textarea>
+<button class="mic-btn" id="micBtn" title="語音輸入">🎤</button>
+</div>
+<button class="translate-btn" id="translateBtn">翻譯</button>
+<div class="translate-result placeholder" id="translateResult">翻譯結果會顯示在這裡</div>
+<div class="translate-note">使用免費翻譯服務（MyMemory），需要網路連線；翻譯品質僅供參考，重要溝通可以直接把畫面給對方看。語音輸入建議用 Chrome 並允許麥克風權限；越南語發音多數 iPhone／Android 都支援。</div>
+</div>
+
+<div class="phrasebook-cat">🙋 打招呼與基本禮貌</div>
+<div id="phrasebook-greeting"></div>
+<div class="phrasebook-cat">🍜 餐廳與飲食</div>
+<div id="phrasebook-food"></div>
+<div class="phrasebook-cat">🛍️ 購物與殺價</div>
+<div id="phrasebook-shopping"></div>
+<div class="phrasebook-cat">🚕 交通與方向</div>
+<div id="phrasebook-transport"></div>
+<div class="phrasebook-cat">🆘 緊急狀況</div>
+<div id="phrasebook-emergency"></div>
+</section>
+
+<!-- ================= INFO ================= -->
+<section class="panel" id="panel-info">
+<div class="info-card">
+<h3>🛂 越南電子簽證 e-Visa</h3>
+<p>台灣護照去越南需要簽證，出發前線上申請電子簽證即可。</p>
+<ul>
+<li>只用官方網站申請：<a href="https://evisa.gov.vn" target="_blank" rel="noopener">evisa.gov.vn</a>（其他網站多是會加收費用的代辦）</li>
+<li>費用：單次入境 US$25／多次入境 US$50</li>
+<li>官方審核約 3 個工作天，實際常要 3–5 天，建議出發前 2–3 週辦好</li>
+<li>準備：護照（入境時效期 6 個月以上）、護照資料頁照片、白底大頭照、可刷國際交易的信用卡</li>
+<li>核准後下載 PDF，列印一份＋手機存一份，入境時和護照一起出示</li>
+</ul>
+<p><a href="https://www.funliday.com/posts/2026-vietnam-visa-application/" target="_blank" rel="noopener">2026 越南電子簽證申請教學（Funliday）</a></p>
+</div>
+<div class="info-card">
+<h3>✈️ 機場與交通</h3>
+<ul>
+<li>去回程都是內排機場 <b>第 2 航廈</b>（國際航廈）</li>
+<li>機場到老城區約 30 公里，Grab 約 45–60 分鐘</li>
+<li>市區移動用 Grab 最方便（可叫汽車或機車），出發前先下載並綁好信用卡</li>
+<li>老城區內大多用走的就到；過馬路要穩定慢慢走，不要突然停下或跑</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>💱 越盾 VND</h3>
+<ul>
+<li>越盾面額大、零很多，付錢時看清楚 10,000 和 100,000</li>
+<li>小吃攤、市場多只收現金；飯店和較大的餐廳可以刷卡</li>
+<li>機場可以先換一點應急，夠用到進市區就好</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>📶 網路 SIM 卡</h3>
+<ul>
+<li>出發前買 eSIM 最省事，落地就能叫 Grab</li>
+<li>也可以在機場入境大廳買實體 SIM 卡（需出示護照）</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>🧥 12 月天氣與穿著</h3>
+<ul>
+<li>12 月河內偏涼，白天約 15–20°C，早晚更冷，常是陰天濕冷</li>
+<li>洋蔥式穿法：長袖＋薄外套，下龍灣船上風大要防風外套</li>
+<li>進陵寢、寺廟要遮肩膀和膝蓋（不穿短褲、無袖）</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>🌙 週末行人徒步區＆夜市</h3>
+<ul>
+<li>還劍湖行人徒步區：週五 19:00 起到週日 24:00，車輛管制，很熱鬧</li>
+<li>同春週末夜市：週五～週日約 18:00–24:00，從 Hàng Đào 街一路往北到同春市場</li>
+<li>這趟可以逛的日子：12/26（六）、12/27（日）晚上</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>🎭 昇龍水上木偶戲</h3>
+<ul>
+<li>地點：還劍湖北岸（57B Đinh Tiên Hoàng），從老城區走路就到</li>
+<li>一天約 6 場，每場約 50 分鐘；晚場常賣完，聖誕週建議先上網訂票</li>
+<li>劇場冷氣很強，帶件外套</li>
+</ul>
+</div>
+<div class="info-card">
+<h3>🍜 美食口袋名單</h3>
+<p>想吃的經典：河粉 Phở、烤肉米線 Bún chả、法國麵包 Bánh mì、蛋咖啡 Cà phê trứng。</p>
+<p style="color:var(--ink-soft);font-size:12.5px;">之後看到想吃的店，傳給 Claude，會幫你排進順路的那一天、標到地圖上。</p>
+</div>
+</section>
+
+</main>
+
+<footer style="text-align:center;font-size:11px;color:var(--ink-soft);padding:8px 0 12px;">
+行程手冊 v1.0 ・ 更新於 2026-11-19（台北時間）
+</footer>
+
+<script>
+/* ---------------- DATA ---------------- */
+const days = [
+{
+date:"12/23", iso:"2026-12-23", week:"三", title:"抵達河內", loc:"還劍湖・老城區",
+tag:"抵達", tagColor:"var(--rust)", hotel:"第一段住宿（12/23–12/25，2晚）：待預訂・建議還劍湖／老城區",
+maps:[
+{label:"內排國際機場", query:"Noi Bai International Airport Terminal 2"},
+{label:"還劍湖", query:"Hoan Kiem Lake Hanoi"},
+{label:"玉山祠", query:"Ngoc Son Temple Hanoi"}
+],
+body:[
+{h:"航班", items:["JX715 星宇航空 11:40 台北桃園(T2) → 13:55 河內內排(T2)，飛行 3 小時 15 分"]},
+{h:"下午", items:["入境、領行李，在機場換一點越盾／買 SIM 卡","叫 Grab 到老城區飯店（約 45–60 分鐘），預計 15:30–16:00 抵達"]},
+{h:"傍晚・晚上", items:["還劍湖散步","玉山祠（平日開到 19:00，走紅色棲旭橋上島）","老城區吃晚餐＋喝蛋咖啡"]}
+],
+note:"第一天不要排太滿，抵達時間會受入境排隊影響"
+},
+{
+date:"12/24", iso:"2026-12-24", week:"四", title:"巴亭區＋西湖", loc:"胡志明陵寢・文廟・鎮國寺",
+tag:"巴亭", tagColor:"var(--seoul-deep)", hotel:"第一段住宿（12/23–12/25）",
+maps:[
+{label:"胡志明陵寢", query:"Ho Chi Minh Mausoleum"},
+{label:"一柱廟", query:"One Pillar Pagoda Hanoi"},
+{label:"文廟", query:"Temple of Literature Hanoi"},
+{label:"鎮國寺", query:"Tran Quoc Pagoda"},
+{label:"河內大教堂", query:"St. Joseph's Cathedral Hanoi"}
+],
+body:[
+{h:"上午", items:[
+"07:30 胡志明陵寢（只開 07:30–11:00，週一、週五休息；這趟只有週四最穩）",
+"09:30 一柱廟（就在陵寢旁，走路到）",
+"10:30 文廟（08:00–17:00，越南第一所大學，約 1 小時）"
+]},
+{h:"下午", items:["午餐＋休息","15:30 鎮國寺（中午 11:00–13:30 休息，下午開到 17:00）","西湖邊看夕陽"]},
+{h:"晚上", items:["🎄 平安夜：河內大教堂一帶會很熱鬧，人多注意隨身物品"]}
+],
+note:"陵寢和寺廟都要遮肩膀和膝蓋；陵寢內不能拍照"
+},
+{
+date:"12/25", iso:"2026-12-25", week:"五", title:"下龍灣 Day 1", loc:"下龍灣遊輪",
+tag:"下龍灣", tagColor:"var(--sky-deep)", hotel:"遊輪過夜",
+maps:[{label:"下龍灣", query:"Ha Long Bay"}],
+body:[
+{h:"行程", items:["早上從老城區接駁出發（車程約 2.5–3 小時）","登船、午餐、遊船","晚上住遊輪"]}
+],
+note:"遊輪尚未預訂；大行李寄放河內飯店，只帶一晚的小包；12 月海上風大偏冷，帶防風外套"
+},
+{
+date:"12/26", iso:"2026-12-26", week:"六", title:"下龍灣 → 河內週末夜", loc:"下龍灣・還劍湖",
+tag:"下龍灣", tagColor:"var(--sky-deep)", hotel:"第二段住宿（12/26–12/29，3晚）：待預訂",
+maps:[
+{label:"下龍灣", query:"Ha Long Bay"},
+{label:"昇龍水上木偶劇院", query:"Thang Long Water Puppet Theatre"},
+{label:"同春夜市", query:"Dong Xuan Night Market Hanoi"}
+],
+body:[
+{h:"上午・下午", items:["遊輪行程、下船","接駁回老城區（通常下午回到）、check-in"]},
+{h:"晚上", items:[
+"🎭 昇龍水上木偶戲（還劍湖北岸，約 50 分鐘）",
+"還劍湖行人徒步區（週五 19:00 到週日 24:00）",
+"同春週末夜市（週五～週日 18:00–24:00）"
+]}
+],
+note:"木偶戲晚場容易賣完，聖誕週記得先訂票；場次要配合遊輪回到河內的時間"
+},
+{
+date:"12/27", iso:"2026-12-27", week:"日", title:"民族學博物館＋彈性時間", loc:"越南民族學博物館",
+tag:"博物館", tagColor:"var(--felt)", hotel:"第二段住宿（12/26–12/29）",
+maps:[{label:"越南民族學博物館", query:"Vietnam Museum of Ethnology"}],
+body:[
+{h:"上午", items:["09:00 越南民族學博物館（週一休，08:30–17:30；Grab 約 25 分鐘）","戶外有真實的傳統高腳屋，約 2–3 小時"]},
+{h:"下午", items:["✨ 空檔：之後看到想去、想吃的放這裡"]},
+{h:"晚上", items:["週末最後一晚：行人徒步區＋夜市"]}
+],
+note:"博物館週一休館，所以排在週日"
+},
+{
+date:"12/28", iso:"2026-12-28", week:"一", title:"火爐監獄＋法式街區", loc:"火爐監獄・歌劇院・同春市場",
+tag:"河內", tagColor:"var(--rust)", hotel:"第二段住宿（12/26–12/29）",
+maps:[
+{label:"火爐監獄", query:"Hoa Lo Prison Relic"},
+{label:"河內歌劇院", query:"Hanoi Opera House"},
+{label:"同春市場", query:"Dong Xuan Market Hanoi"}
+],
+body:[
+{h:"上午", items:["09:00 火爐監獄（08:00–17:00，建議租語音導覽，約 1.5 小時）","11:30 河內歌劇院（法式建築，外觀拍照）"]},
+{h:"下午", items:["同春市場買伴手禮（16:00 後陸續收攤）"]},
+{h:"晚上", items:["最後一晚，回飯店打包"]}
+],
+note:"週一陵寢、博物館都休館，所以排這幾個週一有開的點"
+},
+{
+date:"12/29", iso:"2026-12-29", week:"二", title:"河內 → 回台", loc:"內排國際機場",
+tag:"回程", tagColor:"var(--rust)", hotel:"回程（記得退房）",
+maps:[{label:"內排國際機場", query:"Noi Bai International Airport Terminal 2"}],
+body:[
+{h:"航班", items:["JX716 星宇航空 13:05 河內內排(T2) → 16:45 台北桃園(T2)，飛行 2 小時 40 分"]},
+{h:"上午", items:["飯店附近吃一碗河粉當早餐","10:00 從飯店出發（Grab 約 45–60 分鐘）","11:00 前到機場報到"]}
+],
+note:"這天不排景點，伴手禮前一天買完"
+},
+];
+
+const todoGroups = [
+{ name:"出發前必辦", items:[
+"申請越南電子簽證（只用官網 evisa.gov.vn，建議提早 2–3 週）",
+"訂第一段住宿 12/23–12/25（2晚，建議還劍湖／老城區）",
+"訂第二段住宿 12/26–12/29（3晚）",
+"訂下龍灣遊輪 12/25–12/26",
+"訂昇龍水上木偶戲票（12/26 晚場）",
+"領越盾",
+"買旅遊平安險",
+"買 eSIM（或抵達後在機場買 SIM 卡）",
+"下載 Grab 並綁定信用卡",
+]},
+{ name:"待確認", items:[
+"兩段住宿要不要訂同一間？坐遊輪那晚可以寄放大行李",
+"下龍灣接送地點和時間（是否到飯店接）",
+"遊輪 12/26 幾點回到河內（會影響木偶戲場次）",
+]},
+{ name:"行前採購", items:[
+"自備餐具",
+"腸胃藥",
+"小包衛生紙、濕紙巾",
+]},
+];
+
+const packingGroups = [
+{ name:"證件與財務", items:[
+"護照（入境時效期 6 個月以上）",
+"越南電子簽證 PDF（列印一份＋手機存一份）",
+"越盾現金",
+"信用卡",
+"旅遊平安險保單",
+]},
+{ name:"電子產品", items:[
+"手機＋充電線",
+"行動電源（隨身帶，不能託運）",
+"萬用轉接頭",
+"eSIM（出發前確認已安裝）",
+]},
+{ name:"衣物", items:[
+"薄外套／防風外套（下龍灣船上）",
+"長袖上衣",
+"長褲或過膝裙（進陵寢、寺廟用）",
+"好走的鞋",
+"襪子、內衣褲",
+"睡衣",
+]},
+{ name:"個人用品／藥品", items:[
+"自備餐具",
+"常用藥、腸胃藥",
+"小包衛生紙、濕紙巾",
+"防蚊液",
+"盥洗用品",
+"下龍灣過夜小包（只帶一晚的東西）",
+]},
+];
+
+const itinPanel = document.getElementById('panel-itinerary');
+const pad2 = n => n<10 ? '0'+n : ''+n;
+const _n = new Date();
+const todayISO = _n.getFullYear()+'-'+pad2(_n.getMonth()+1)+'-'+pad2(_n.getDate());
+
+function mapUrl(query){
+return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
+}
+
+days.forEach((d,i)=>{
+const isToday = d.iso === todayISO;
+const card = document.createElement('div');
+card.className = 'day' + (isToday?' today':'');
+card.id = 'day-'+i;
+card.innerHTML = `
+<div class="day-head" data-idx="${i}">
+<div class="day-date">${d.date}<div class="day-week">週${d.week}</div></div>
+<div class="day-meta">
+<div class="day-title">${d.title}</div>
+<div class="day-loc">${d.loc}${d.maps && d.maps[0] ? ` <a class="map-pin" href="${mapUrl(d.maps[0].query)}" target="_blank" rel="noopener" title="在 Google Map 開啟" onclick="event.stopPropagation()">📍</a>` : ''}</div>
+</div>
+<span class="day-tag" style="background:${d.tagColor}">${d.tag}</span>
+<span class="chev">▾</span>
+</div>
+<div class="day-body">
+${d.body.map(b=>`<h4>${b.h}</h4><ul>${b.items.map(it=>`<li>${it}</li>`).join('')}</ul>`).join('')}
+${d.maps && d.maps.length ? `<h4>📍 地圖</h4><ul class="map-links">${d.maps.map(m=>`<li><a href="${mapUrl(m.query)}" target="_blank" rel="noopener">📍 ${m.label}</a></li>`).join('')}</ul>` : ''}
+<div class="hotel-line">🏨 ${d.hotel}</div>
+${d.cost?`<div class="hotel-line">💰 ${d.cost}</div>`:''}
+${d.note?`<div class="note">⚠️ ${d.note}</div>`:''}
+</div>
+`;
+itinPanel.appendChild(card);
+});
+
+itinPanel.addEventListener('click', e=>{
+const head = e.target.closest('.day-head');
+if(!head) return;
+head.closest('.day').classList.toggle('open');
+});
+
+const todayCard = itinPanel.querySelector('.day.today');
+if(todayCard) todayCard.classList.add('open');
+else { const first = itinPanel.querySelector('.day'); if(first) first.classList.add('open'); }
+
+/* ---------------- COUNTDOWN / HORIZON ---------------- */
+const tripStart = new Date("2026-12-23T00:00:00");
+const tripEnd = new Date("2026-12-29T23:59:59");
+const now = new Date();
+const countdownNum = document.getElementById('countdownNum');
+const countdownLabel = document.getElementById('countdownLabel');
+const horizonFill = document.getElementById('horizonFill');
+const horizonMarker = document.getElementById('horizonMarker');
+
+if(now < tripStart){
+const diffDays = Math.ceil((tripStart - now)/86400000);
+countdownNum.textContent = diffDays;
+countdownLabel.textContent = "天後出發";
+horizonFill.style.width = "0%";
+horizonMarker.style.left = "0%";
+} else if(now <= tripEnd){
+const diffDays = Math.floor((now - tripStart)/86400000)+1;
+countdownNum.textContent = "Day " + diffDays;
+countdownLabel.textContent = "旅程進行中";
+const pct = Math.min(100, ((now-tripStart)/(tripEnd-tripStart))*100);
+horizonFill.style.width = pct+"%";
+horizonMarker.style.left = pct+"%";
+} else {
+countdownNum.textContent = "✓";
+countdownLabel.textContent = "旅程已結束";
+horizonFill.style.width = "100%";
+horizonMarker.style.left = "100%";
+}
+
+/* ---------------- TABS ---------------- */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+btn.addEventListener('click', ()=>{
+document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+btn.classList.add('active');
+document.getElementById('panel-'+btn.dataset.tab).classList.add('active');
+if(btn.dataset.tab === 'map'){
+requestAnimationFrame(()=>{
+initTripMap();
+if(tripMap) tripMap.invalidateSize();
+});
+}
+});
+});
+
+/* ---------------- MAP ---------------- */
+const C = {old:"#A7281F", badinh:"#2F6B57", bay:"#2B6C8A", museum:"#C28A1C"};
+const mapPoints = [
+{name:"內排國際機場 T2", day:"12/23 · 12/29", color:C.old, lat:21.2187, lng:105.8042, note:"去回程都在第 2 航廈", region:"hanoi", query:"Noi Bai International Airport Terminal 2"},
+{name:"還劍湖", day:"12/23", color:C.old, lat:21.0288, lng:105.8525, note:"河內市中心，週末是行人徒步區", region:"hanoi", query:"Hoan Kiem Lake Hanoi"},
+{name:"玉山祠", day:"12/23", color:C.old, lat:21.0307178, lng:105.8523766, note:"平日開到 19:00", region:"hanoi", query:"Ngoc Son Temple Hanoi"},
+{name:"老城區 36 古街", day:"12/23", color:C.old, lat:21.034059, lng:105.8506368, note:"建議住這一區", region:"hanoi", query:"Hanoi Old Quarter"},
+{name:"胡志明陵寢", day:"12/24", color:C.badinh, lat:21.0368973, lng:105.8346667, note:"07:30–11:00，週一、五休", region:"hanoi", query:"Ho Chi Minh Mausoleum"},
+{name:"一柱廟", day:"12/24", color:C.badinh, lat:21.0358725, lng:105.8336273, note:"陵寢旁", region:"hanoi", query:"One Pillar Pagoda Hanoi"},
+{name:"文廟", day:"12/24", color:C.badinh, lat:21.0281175, lng:105.8356692, note:"08:00–17:00", region:"hanoi", query:"Temple of Literature Hanoi"},
+{name:"鎮國寺", day:"12/24", color:C.badinh, lat:21.047871, lng:105.8368738, note:"西湖邊，中午休息", region:"hanoi", query:"Tran Quoc Pagoda"},
+{name:"河內大教堂", day:"12/24", color:C.badinh, lat:21.0287, lng:105.8489, note:"平安夜很熱鬧", region:"hanoi", query:"St. Joseph's Cathedral Hanoi"},
+{name:"下龍灣", day:"12/25–12/26", color:C.bay, lat:20.9101, lng:107.1839, note:"遊輪過夜", region:"halong", query:"Ha Long Bay"},
+{name:"昇龍水上木偶劇院", day:"12/26", color:C.old, lat:21.0316826, lng:105.8533466, note:"晚場先訂票", region:"hanoi", query:"Thang Long Water Puppet Theatre"},
+{name:"同春夜市", day:"12/26 · 12/27", color:C.old, lat:21.0380017, lng:105.8490168, note:"週五～週日 18:00–24:00", region:"hanoi", query:"Dong Xuan Night Market Hanoi"},
+{name:"越南民族學博物館", day:"12/27", color:C.museum, lat:21.0403422, lng:105.7987354, note:"週一休，Grab 約 25 分鐘", region:"hanoi", query:"Vietnam Museum of Ethnology"},
+{name:"火爐監獄", day:"12/28", color:C.old, lat:21.0253297, lng:105.8464781, note:"08:00–17:00", region:"hanoi", query:"Hoa Lo Prison Relic"},
+{name:"河內歌劇院", day:"12/28", color:C.old, lat:21.0242501, lng:105.8576249, note:"法式建築", region:"hanoi", query:"Hanoi Opera House"},
+{name:"同春市場", day:"12/28", color:C.old, lat:21.0381434, lng:105.8500387, note:"伴手禮，16:00 後收攤", region:"hanoi", query:"Dong Xuan Market Hanoi"},
+];
+
+const dayGroups = [
+{date:"12/23", title:"抵達河內", color:C.old, points:["內排國際機場 T2","還劍湖","玉山祠","老城區 36 古街"]},
+{date:"12/24", title:"巴亭區＋西湖", color:C.badinh, points:["胡志明陵寢","一柱廟","文廟","鎮國寺","河內大教堂"]},
+{date:"12/25", title:"下龍灣 Day 1", color:C.bay, points:["下龍灣"]},
+{date:"12/26", title:"下龍灣 → 河內週末夜", color:C.bay, points:["下龍灣","昇龍水上木偶劇院","同春夜市"]},
+{date:"12/27", title:"民族學博物館＋彈性時間", color:C.museum, points:["越南民族學博物館","同春夜市"]},
+{date:"12/28", title:"火爐監獄＋法式街區", color:C.old, points:["火爐監獄","河內歌劇院","同春市場"]},
+{date:"12/29", title:"河內 → 回台", color:C.old, points:["內排國際機場 T2"]},
+];
+
+let tripMap = null;
+let mapMarkers = [];
+
+function gmapUrl(point){
+const q = (point && point.query) ? point.query : (point.lat + ',' + point.lng);
+return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+}
+function findPoint(name){ return mapPoints.find(p=>p.name===name); }
+
+function renderDayList(){
+const container = document.getElementById('dayList');
+container.innerHTML = '';
+dayGroups.forEach((g, gi)=>{
+const el = document.createElement('div');
+el.className = 'day-list-group';
+el.innerHTML = `
+<div class="day-list-head">
+<div class="day-list-date">${g.date}</div>
+<span class="day-list-tag" style="background:${g.color}"></span>
+<div class="day-list-title">${g.title}</div>
+</div>
+<ul class="day-list-points">${g.points.map(name=>{
+const pt = findPoint(name);
+const link = pt ? `<a href="${gmapUrl(pt)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📍 ${name}</a>` : name;
+return `<li>${link}</li>`;
+}).join('')}</ul>
+`;
+el.addEventListener('click', ()=>{
+document.getElementById('panel-map').scrollIntoView({behavior:'smooth', block:'start'});
+initTripMap();
+requestAnimationFrame(()=>{
+if(!tripMap) return;
+tripMap.invalidateSize();
+const pts = mapMarkers.filter(m=>g.points.includes(m.pointName));
+if(!pts.length) return;
+const bounds = L.latLngBounds(pts.map(m=>m.getLatLng()));
+tripMap.fitBounds(bounds, {padding:[40,40], maxZoom:15});
+pts.forEach(m=>m.openPopup());
+});
+});
+container.appendChild(el);
+});
+}
+renderDayList();
+
+function initTripMap(){
+if(tripMap) return;
+if(typeof L === 'undefined'){
+document.getElementById('tripMap').innerHTML =
+'<div style="padding:20px;font-size:13px;color:var(--ink-soft);">地圖套件載入失敗，請確認網路連線後重新整理頁面。</div>';
+return;
+}
+tripMap = L.map('tripMap', {scrollWheelZoom:false});
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+maxZoom:18,
+attribution:'&copy; OpenStreetMap contributors'
+}).addTo(tripMap);
+mapPoints.forEach(p=>{
+const marker = L.circleMarker([p.lat, p.lng], {radius:8, color:'#FBF7EE', weight:2, fillColor:p.color, fillOpacity:1}).addTo(tripMap);
+marker.bindPopup(
+`<div class="popup-day">${p.day}</div><div class="popup-title">${p.name}</div>${p.note?`<div class="popup-note">${p.note}</div>`:''}<div class="popup-note" style="margin-top:6px;"><a href="${gmapUrl(p)}" target="_blank" rel="noopener" style="color:var(--sky-deep);">📍 在 Google Map 開啟</a></div>`
+);
+marker.regionTag = p.region;
+marker.pointName = p.name;
+mapMarkers.push(marker);
+});
+fitToRegion('all');
+document.querySelectorAll('.map-toolbar button').forEach(btn=>{
+btn.addEventListener('click', ()=>{
+document.querySelectorAll('.map-toolbar button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
+fitToRegion(btn.dataset.view);
+});
+});
+}
+
+function fitToRegion(view){
+if(!tripMap) return;
+let pts = view==='all' ? mapMarkers : mapMarkers.filter(m=>m.regionTag===view);
+if(view==='hanoi') pts = pts.filter(m=>m.pointName!=='內排國際機場 T2');
+if(!pts.length) return;
+if(pts.length===1){ tripMap.setView(pts[0].getLatLng(), 10); return; }
+tripMap.fitBounds(L.latLngBounds(pts.map(m=>m.getLatLng())), {padding:[30,30]});
+}
+
+/* ---------------- TRANSLATE ---------------- */
+const phrasebook = {
+greeting: [
+{zh:"你好", local:"Xin chào", pron:"近似音：新早"},
+{zh:"謝謝", local:"Cảm ơn", pron:"近似音：感恩"},
+{zh:"對不起／不好意思", local:"Xin lỗi", pron:"近似音：新壘"},
+{zh:"再見", local:"Tạm biệt", pron:"近似音：膽別"},
+{zh:"是／好", local:"Vâng", pron:"vâng"},
+{zh:"不是／不要", local:"Không", pron:"近似音：空"},
+],
+food: [
+{zh:"請給我菜單", local:"Cho tôi xem thực đơn", pron:"cho toi xem thuc don"},
+{zh:"這個多少錢？", local:"Cái này bao nhiêu tiền?", pron:"cai nay bao nhieu tien"},
+{zh:"好吃！", local:"Ngon quá!", pron:"ngon qua"},
+{zh:"不要辣", local:"Không cay", pron:"近似音：空該"},
+{zh:"不要香菜", local:"Không cho rau mùi", pron:"khong cho rau mui"},
+{zh:"買單", local:"Tính tiền", pron:"tinh tien"},
+],
+shopping: [
+{zh:"太貴了", local:"Đắt quá", pron:"dat qua"},
+{zh:"可以便宜一點嗎？", local:"Bớt được không?", pron:"bot duoc khong"},
+{zh:"我要買這個", local:"Tôi lấy cái này", pron:"toi lay cai nay"},
+{zh:"可以刷卡嗎？", local:"Có nhận thẻ không?", pron:"co nhan the khong"},
+],
+transport: [
+{zh:"廁所在哪裡？", local:"Nhà vệ sinh ở đâu?", pron:"nha ve sinh o dau"},
+{zh:"請帶我去這裡", local:"Cho tôi đến đây", pron:"cho toi den day"},
+{zh:"要多久？", local:"Mất bao lâu?", pron:"mat bao lau"},
+{zh:"請在這裡停", local:"Dừng ở đây", pron:"dung o day"},
+],
+emergency: [
+{zh:"救命！", local:"Cứu tôi với!", pron:"cuu toi voi"},
+{zh:"我需要醫生", local:"Tôi cần bác sĩ", pron:"toi can bac si"},
+{zh:"請幫我叫警察", local:"Gọi cảnh sát giúp tôi", pron:"goi canh sat giup toi"},
+{zh:"我迷路了", local:"Tôi bị lạc đường", pron:"toi bi lac duong"},
+],
+};
+
+function renderPhrasebook(){
+Object.keys(phrasebook).forEach(cat=>{
+const el = document.getElementById('phrasebook-'+cat);
+if(!el) return;
+el.innerHTML = '';
+phrasebook[cat].forEach(p=>{
+const item = document.createElement('div');
+item.className = 'phrase-item';
+item.innerHTML = `<div class="phrase-text"><div class="phrase-zh">${p.zh}</div><div class="phrase-local">${p.local}</div><div class="phrase-pron">${p.pron}</div></div><button class="speak-btn">🔊</button>`;
+item.querySelector('.speak-btn').addEventListener('click', ()=>speakText(p.local, 'vi'));
+el.appendChild(item);
+});
+});
+}
+renderPhrasebook();
+
+/* ---------------- toast (instead of alert) ---------------- */
+function toast(msg){
+let t = document.getElementById('toast');
+if(!t){ t = document.createElement('div'); t.id='toast'; document.body.appendChild(t); }
+t.textContent = msg;
+t.classList.add('show');
+clearTimeout(t._h);
+t._h = setTimeout(()=>t.classList.remove('show'), 3200);
+}
+
+/* ---------------- SPEECH: TTS ---------------- */
+const speechLangMap = {'zh-TW':'zh-TW', 'vi':'vi-VN', 'en':'en-US'};
+let cachedVoices = [];
+function loadVoices(){ if('speechSynthesis' in window) cachedVoices = window.speechSynthesis.getVoices(); }
+if('speechSynthesis' in window){ loadVoices(); window.speechSynthesis.onvoiceschanged = loadVoices; }
+function findVoice(langCode){
+if(!cachedVoices.length) loadVoices();
+const exact = cachedVoices.find(v=>v.lang === langCode || v.lang === langCode.replace('-','_'));
+if(exact) return exact;
+const prefix = langCode.split('-')[0];
+return cachedVoices.find(v=>v.lang && v.lang.split(/[-_]/)[0] === prefix) || null;
+}
+function speakText(text, langCode){
+if(!text) return;
+if(!('speechSynthesis' in window)){ toast('這台裝置不支援語音播放，可以直接把畫面給對方看'); return; }
+const targetLang = speechLangMap[langCode] || 'en-US';
+const voice = findVoice(targetLang);
+window.speechSynthesis.cancel();
+setTimeout(()=>{
+const utter = new SpeechSynthesisUtterance(text);
+utter.lang = targetLang;
+if(voice) utter.voice = voice;
+utter.onerror = ()=>toast('播放失敗，可以直接把畫面給對方看');
+window.speechSynthesis.speak(utter);
+}, 80);
+}
+
+/* ---------------- SPEECH: recognition ---------------- */
+let recognizing = false;
+let activeRecognition = null;
+document.getElementById('micBtn').addEventListener('click', ()=>{
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const micBtn = document.getElementById('micBtn');
+if(!SR){ toast('這個瀏覽器不支援語音輸入，請改用 Chrome 或直接打字'); return; }
+if(recognizing && activeRecognition){ activeRecognition.stop(); return; }
+const recognition = new SR();
+activeRecognition = recognition;
+recognition.lang = speechLangMap[document.getElementById('langFrom').value] || 'zh-TW';
+recognition.interimResults = false;
+recognition.maxAlternatives = 1;
+recognition.onstart = ()=>{ recognizing = true; micBtn.classList.add('recording'); micBtn.textContent = '⏹'; };
+const reset = ()=>{ recognizing = false; micBtn.classList.remove('recording'); micBtn.textContent = '🎤'; };
+recognition.onend = reset;
+recognition.onerror = (e)=>{
+reset();
+if(e.error === 'not-allowed') toast('請允許瀏覽器使用麥克風後再試一次');
+else if(e.error === 'language-not-supported') toast('這個語言目前無法語音輸入，請改用打字');
+};
+recognition.onresult = (e)=>{
+const transcript = e.results[0][0].transcript;
+const ta = document.getElementById('translateInput');
+ta.value = ta.value ? ta.value + ' ' + transcript : transcript;
+};
+recognition.start();
+});
+
+document.getElementById('swapLangBtn').addEventListener('click', ()=>{
+const from = document.getElementById('langFrom');
+const to = document.getElementById('langTo');
+const tmp = from.value; from.value = to.value; to.value = tmp;
+});
+
+document.getElementById('translateBtn').addEventListener('click', async ()=>{
+const text = document.getElementById('translateInput').value.trim();
+const resultEl = document.getElementById('translateResult');
+if(!text){ resultEl.textContent = '請先輸入文字'; resultEl.classList.add('placeholder'); return; }
+const from = document.getElementById('langFrom').value;
+const to = document.getElementById('langTo').value;
+resultEl.textContent = '翻譯中…';
+resultEl.classList.add('placeholder');
+try{
+const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${from}|${to}`;
+const res = await fetch(url);
+const data = await res.json();
+const translated = data && data.responseData && data.responseData.translatedText;
+if(!translated) throw new Error('empty');
+resultEl.classList.remove('placeholder');
+resultEl.innerHTML = '';
+const span = document.createElement('span');
+span.textContent = translated;
+const copyBtn = document.createElement('button');
+copyBtn.className = 'copy-btn'; copyBtn.textContent = '複製'; copyBtn.style.right = '54px';
+copyBtn.onclick = ()=>{
+navigator.clipboard.writeText(translated).then(()=>{ copyBtn.textContent = '已複製'; setTimeout(()=>copyBtn.textContent='複製', 1500); }).catch(()=>toast('無法複製，請長按文字複製'));
+};
+const speakBtn = document.createElement('button');
+speakBtn.className = 'copy-btn'; speakBtn.textContent = '🔊';
+speakBtn.onclick = ()=>speakText(translated, to);
+resultEl.appendChild(span); resultEl.appendChild(copyBtn); resultEl.appendChild(speakBtn);
+const gLink = document.createElement('div');
+gLink.style.marginTop = '10px';
+const gtUrl = 'https://translate.google.com/?sl=' + encodeURIComponent(from) + '&tl=' + encodeURIComponent(to) + '&text=' + encodeURIComponent(text) + '&op=translate';
+gLink.innerHTML = `<a href="${gtUrl}" target="_blank" rel="noopener" style="color:var(--sky-deep); font-size:12px;">🔗 在 Google 翻譯開啟</a>`;
+resultEl.appendChild(gLink);
+} catch(err){
+resultEl.classList.add('placeholder');
+resultEl.textContent = '翻譯失敗，請確認網路連線後再試一次';
+}
+});
+
+/* ---------------- storage (this device) ---------------- */
+const store = {
+get(k){ try{ return JSON.parse(localStorage.getItem(k) || '{}'); }catch(e){ return {}; } },
+set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+
+function makeChecklist(groups, containerId, badgeId, storageKey, resetId){
+const container = document.getElementById(containerId);
+const badge = document.getElementById(badgeId);
+let state = store.get(storageKey);
+const idOf = (gi,ii)=>gi+'-'+ii;
+function render(){
+container.innerHTML = '';
+let remaining = 0;
+groups.forEach((g, gi)=>{
+const groupEl = document.createElement('div');
+groupEl.className = 'todo-group';
+const doneCount = g.items.filter((_,ii)=>state[idOf(gi,ii)]).length;
+groupEl.innerHTML = `<h3>${g.name} <span class="count">${doneCount}/${g.items.length}</span></h3>`;
+g.items.forEach((text, ii)=>{
+const id = idOf(gi,ii);
+const checked = !!state[id];
+if(!checked) remaining++;
+const row = document.createElement('label');
+row.className = 'todo-item' + (checked?' checked':'');
+row.innerHTML = `<input type="checkbox" data-id="${id}" ${checked?'checked':''}><span class="todo-text">${text}</span>`;
+groupEl.appendChild(row);
+});
+container.appendChild(groupEl);
+});
+badge.textContent = remaining;
+}
+container.addEventListener('change', e=>{
+const cb = e.target.closest('input[type=checkbox]');
+if(!cb) return;
+state[cb.dataset.id] = cb.checked;
+store.set(storageKey, state);
+render();
+});
+document.getElementById(resetId).addEventListener('click', ()=>{ state = {}; store.set(storageKey, state); render(); });
+render();
+return {container, idOf};
+}
+const todoList = makeChecklist(todoGroups, 'todoContainer', 'todoBadge', 'hanoi-trip-todos', 'resetTodos');
+const packingList = makeChecklist(packingGroups, 'packingContainer', 'packingBadge', 'hanoi-trip-packing', 'resetPacking');
+
+/* ---------------- SEARCH ---------------- */
+const searchInput = document.getElementById('globalSearch');
+const searchClearBtn = document.getElementById('searchClear');
+const searchResultsEl = document.getElementById('searchResults');
+const searchCatColor = {'行程':'var(--rust)', '待辦':'var(--sky-deep)', '行李':'var(--seoul-deep)', '資訊':'var(--felt)'};
+
+function flashEl(el){
+if(!el) return;
+el.classList.remove('search-hit'); void el.offsetWidth; el.classList.add('search-hit');
+setTimeout(()=>el.classList.remove('search-hit'), 1600);
+}
+function goToTab(tabName){
+const btn = document.querySelector(`.tab-btn[data-tab="${tabName}"]`);
+if(btn) btn.click();
+}
+function buildSearchIndex(){
+const idx = [];
+days.forEach((d,i)=>{
+const parts = [d.date, d.title, d.loc, d.hotel, d.cost, d.note, ...d.body.flatMap(b=>[b.h, ...b.items])].filter(Boolean);
+idx.push({cat:'行程', title:`${d.date}　${d.title}`, sub:d.loc, text:parts.join(' '), go:()=>{
+goToTab('itinerary');
+const card = document.getElementById('day-'+i);
+if(!card) return;
+card.classList.add('open');
+requestAnimationFrame(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); flashEl(card); });
+}});
+});
+[[todoGroups,'待辦','todo',todoList],[packingGroups,'行李','packing',packingList]].forEach(([groups,cat,tab,list])=>{
+groups.forEach((g,gi)=>{
+g.items.forEach((text,ii)=>{
+idx.push({cat, title:text, sub:g.name, text:text+' '+g.name, go:()=>{
+goToTab(tab);
+requestAnimationFrame(()=>{
+const row = list.container.querySelector(`input[data-id="${list.idOf(gi,ii)}"]`)?.closest('.todo-item');
+if(!row) return;
+row.scrollIntoView({behavior:'smooth', block:'center'}); flashEl(row);
+});
+}});
+});
+});
+});
+document.querySelectorAll('#panel-info .info-card').forEach((card,i)=>{
+const h3 = card.querySelector('h3');
+idx.push({cat:'資訊', title: h3 ? h3.textContent : '實用資訊', sub:'', text: card.textContent, go:()=>{
+goToTab('info');
+requestAnimationFrame(()=>{ card.scrollIntoView({behavior:'smooth', block:'start'}); flashEl(card); });
+}});
+});
+return idx;
+}
+const searchIndex = buildSearchIndex();
+
+function escapeHtml(s){ return s.replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function runSearch(query){
+const q = query.trim().toLowerCase();
+if(!q){ searchResultsEl.classList.remove('show'); searchResultsEl.innerHTML = ''; return; }
+const matches = searchIndex.filter(item => item.text.toLowerCase().includes(q)).slice(0, 30);
+searchResultsEl.innerHTML = '';
+if(!matches.length){
+searchResultsEl.innerHTML = `<div class="search-empty">找不到符合「${escapeHtml(query)}」的內容</div>`;
+} else {
+matches.forEach(m=>{
+const row = document.createElement('div');
+row.className = 'search-result';
+row.innerHTML = `<span class="search-result-cat" style="background:${searchCatColor[m.cat]}">${m.cat}</span><div><div class="search-result-title">${m.title}</div>${m.sub?`<div class="search-result-sub">${m.sub}</div>`:''}</div>`;
+row.addEventListener('click', ()=>{
+m.go();
+searchInput.value = '';
+searchClearBtn.style.display = 'none';
+searchResultsEl.classList.remove('show');
+searchInput.blur();
+});
+searchResultsEl.appendChild(row);
+});
+}
+searchResultsEl.classList.add('show');
+}
+searchInput.addEventListener('input', ()=>{
+searchClearBtn.style.display = searchInput.value ? 'flex' : 'none';
+runSearch(searchInput.value);
+});
+searchInput.addEventListener('focus', ()=>{ if(searchInput.value.trim()) searchResultsEl.classList.add('show'); });
+searchClearBtn.addEventListener('click', ()=>{
+searchInput.value = ''; searchClearBtn.style.display = 'none'; runSearch(''); searchInput.focus();
+});
+document.addEventListener('click', (e)=>{ if(!e.target.closest('.search-inner')) searchResultsEl.classList.remove('show'); });
+
+const searchWrapEl = document.getElementById('searchWrap');
+const navTabsEl = document.querySelector('nav.tabs');
+if(searchWrapEl && navTabsEl) searchWrapEl.style.top = navTabsEl.offsetHeight + 'px';
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+window.addEventListener('load', ()=>{
+navigator.serviceWorker.register('sw.js').then(reg=>reg.update()).catch(()=>{});
+});
+}
+</script>
+</body>
+</html>
