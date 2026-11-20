@@ -767,6 +767,7 @@ transition:opacity .2s, transform .2s;z-index:50;}
 <div class="map-toolbar">
 <button data-view="all" class="active">全部</button>
 <button data-view="hanoi">河內市區</button>
+<button data-view="eat">好買＋美食</button>
 <button data-view="halong">下龍灣</button>
 </div>
 <div id="tripMap"></div>
@@ -775,6 +776,8 @@ transition:opacity .2s, transform .2s;z-index:50;}
 <span><i style="background:#1E5A44"></i>巴亭區／西湖</span>
 <span><i style="background:#2A7486"></i>下龍灣</span>
 <span><i style="background:#B8902F"></i>博物館</span>
+<span><i style="background:#7A4FA0"></i>好玩好買</span>
+<span><i style="background:#D9772B"></i>美食</span>
 </div>
 <div id="dayList" style="margin-top:18px;"></div>
 </section>
@@ -905,16 +908,36 @@ transition:opacity .2s, transform .2s;z-index:50;}
 </ul>
 </div>
 <div class="info-card">
-<h3>🍜 美食口袋名單</h3>
-<p>想吃的經典：河粉 Phở、烤肉米線 Bún chả、法國麵包 Bánh mì、蛋咖啡 Cà phê trứng。</p>
-<p style="color:var(--ink-soft);font-size:12.5px;">之後看到想吃的店，傳給 Claude，會幫你排進順路的那一天、標到地圖上。</p>
+<h3>🛍️ 好玩好買</h3>
+<ul>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Star%20Kitchen%20Souvenir%20Gift%20Shop%2015B%20Duong%20Thanh%20Hanoi" target="_blank" rel="noopener">📍 Star Kitchen 星廚伴手禮</a>：15B Đường Thành，09:00–21:00。越南口味餅乾、法國麵包脆餅，可以試吃，河內店有下龍灣限定款；結帳時對一下優惠有沒有算到</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Train%20Street%20Hanoi%20coffee%202%20Tran%20Phu" target="_blank" rel="noopener">📍 火車街（Trần Phú 段）</a>：火車貼著咖啡店開過去；要點飲料才能坐，警察有時會來清場，建議先跟咖啡店預約座位</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Cho%20Hang%20Da%20Hanoi" target="_blank" rel="noopener">📍 Hàng Da 市場</a>：越南陶瓷、乾貨、零食；入口很難找，在大樓旁的地下樓梯</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Cho%20Hang%20Ma%2012%20Hang%20Ma%20Hanoi" target="_blank" rel="noopener">📍 Hàng Mã 聖誕裝飾街</a>：12 月整條街都是聖誕和新年裝飾，很好拍；買東西要殺價</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Hadong%20Silk%20102%20Hang%20Gai%20Hanoi" target="_blank" rel="noopener">📍 Hàng Gai 絲綢街</a>：Hadong Silk（102 號）、SilkyVietnam（78 號）賣絲巾和睡衣；慢慢看，不要被催著買</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Dong%20Xuan%20Market%20Hanoi" target="_blank" rel="noopener">📍 同春市場</a>：批發市場，乾果、咖啡、腰果；要殺價，16:00 後陸續收攤</li>
+</ul>
+<p style="color:var(--ink-soft);font-size:12.5px;">Star Kitchen、火車街、Hàng Da 市場彼此走路 5 分鐘內，排在 12/27 下午一起逛。</p>
+</div>
+<div class="info-card">
+<h3>🍜 美食清單</h3>
+<ul>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Pho%20Gia%20Truyen%2049%20Bat%20Dan%20Hanoi" target="_blank" rel="noopener">📍 Phở Gia Truyền Bát Đàn</a>：49 Bát Đàn，河內代表性的牛肉河粉，06:00–11:00、17:00–21:30，常排隊但很快</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Banh%20Mi%2025%20Hang%20Ca%20Hanoi" target="_blank" rel="noopener">📍 Bánh Mì 25</a>：25 Hàng Cá，07:00–21:00，法國麵包名店，就在同春夜市旁</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Bun%20Cha%20Dac%20Kim%201%20Hang%20Manh%20Hanoi" target="_blank" rel="noopener">📍 Bún Chả Đắc Kim</a>：1 Hàng Mành，老字號烤肉米線，份量大、很擠、要併桌</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Bun%20cha%20Coi%2057%20Nguyen%20Huu%20Huan%20Hanoi" target="_blank" rel="noopener">📍 Bún chả Cội</a>：57 Nguyễn Hữu Huân，還劍湖東邊，評價高、有套餐</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Sen%20Trang%20An%2047B%20Hang%20Be%20Hanoi" target="_blank" rel="noopener">📍 Sen Tràng An</a>：47B Hàng Bè，有冷氣可以坐下來慢慢吃，河粉和烤海鮮受好評</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Cafe%20Giang%2039%20Nguyen%20Huu%20Huan%20Hanoi" target="_blank" rel="noopener">📍 Café Giảng 蛋咖啡</a>：39 Nguyễn Hữu Huân，蛋咖啡老店，07:00–22:30，入口在小巷裡</li>
+<li><a href="https://www.google.com/maps/search/?api=1&query=Cong%20Cafe%20Nha%20Tho%2027%20Nha%20Tho%20Hanoi" target="_blank" rel="noopener">📍 Cộng Cà Phê 大教堂店</a>：27 Nhà Thờ，坐窗邊看大教堂，招牌是椰子咖啡</li>
+</ul>
+<p style="color:var(--ink-soft);font-size:12.5px;">之後看到想吃的店，傳給 Claude 幫你排進順路的那一天。</p>
 </div>
 </section>
 
 </main>
 
 <footer style="text-align:center;font-size:11px;color:var(--ink-soft);padding:8px 0 12px;">
-行程手冊 v1.3 ・ 更新於 2026-11-19 23:50（台北時間）
+行程手冊 v1.4 ・ 更新於 2026-11-20 17:50（台北時間）
 </footer>
 
 <script>
@@ -931,7 +954,7 @@ maps:[
 body:[
 {h:"航班", items:["JX715 星宇航空 11:40 台北桃園(T2) → 13:55 河內內排(T2)，飛行 3 小時 15 分"]},
 {h:"下午", items:["入境、領行李，在機場換一點越盾／買 SIM 卡","叫 Grab 到老城區飯店（約 45–60 分鐘），預計 15:30–16:00 抵達"]},
-{h:"傍晚・晚上", items:["還劍湖散步","玉山祠（平日開到 19:00，走紅色棲旭橋上島）","老城區吃晚餐＋喝蛋咖啡"]}
+{h:"傍晚・晚上", items:["還劍湖散步","玉山祠（平日開到 19:00，走紅色棲旭橋上島）","🍜 晚餐：Bún chả Cội 或 Sen Tràng An（都在湖東邊）","☕ Café Giảng 蛋咖啡"]}
 ],
 note:"第一天不要排太滿，抵達時間會受入境排隊影響"
 },
@@ -947,12 +970,13 @@ maps:[
 ],
 body:[
 {h:"上午", items:[
+"06:45 🍜 早餐：Phở Gia Truyền Bát Đàn（06:00 開，吃完叫 Grab 去陵寢）",
 "07:30 胡志明陵寢（只開 07:30–11:00，週一、週五休息；這趟只有週四最穩）",
 "09:30 一柱廟（就在陵寢旁，走路到）",
 "10:30 文廟（08:00–17:00，越南第一所大學，約 1 小時）"
 ]},
 {h:"下午", items:["午餐＋休息","15:30 鎮國寺（中午 11:00–13:30 休息，下午開到 17:00）","西湖邊看夕陽"]},
-{h:"晚上", items:["🎄 平安夜：河內大教堂一帶會很熱鬧，人多注意隨身物品"]}
+{h:"晚上", items:["🎄 平安夜：河內大教堂一帶會很熱鬧，人多注意隨身物品","☕ Cộng Cà Phê 大教堂店：窗邊看教堂，喝椰子咖啡"]}
 ],
 note:"陵寢和寺廟都要遮肩膀和膝蓋；陵寢內不能拍照"
 },
@@ -978,7 +1002,9 @@ body:[
 {h:"晚上", items:[
 "🎭 昇龍水上木偶戲（還劍湖北岸，約 50 分鐘）",
 "還劍湖行人徒步區（週五 19:00 到週日 24:00）",
-"同春週末夜市（週五～週日 18:00–24:00）"
+"同春週末夜市（週五～週日 18:00–24:00）",
+"🎄 Hàng Mã 聖誕裝飾街就在夜市旁，順路逛",
+"🍜 宵夜：Bánh Mì 25 或 Bún Chả Đắc Kim"
 ]}
 ],
 note:"木偶戲晚場容易賣完，聖誕週記得先訂票；場次要配合遊輪回到河內的時間"
@@ -989,7 +1015,7 @@ tag:"博物館", tagColor:"var(--felt)", hotel:"第二段住宿（12/26–12/29�
 maps:[{label:"越南民族學博物館", query:"Vietnam Museum of Ethnology"}],
 body:[
 {h:"上午", items:["09:00 越南民族學博物館（週一休，08:30–17:30；Grab 約 25 分鐘）","戶外有真實的傳統高腳屋，約 2–3 小時"]},
-{h:"下午", items:["✨ 空檔：之後看到想去、想吃的放這裡"]},
+{h:"下午", items:["🛍️ Star Kitchen 星廚伴手禮（試吃、買餅乾）","🚂 火車街（Trần Phú 段，先跟咖啡店預約座位）","🛍️ Hàng Da 市場（陶瓷、乾貨）","三個點走路都在 5 分鐘內"]},
 {h:"晚上", items:["週末最後一晚：行人徒步區＋夜市"]}
 ],
 note:"博物館週一休館，所以排在週日"
@@ -1004,7 +1030,7 @@ maps:[
 ],
 body:[
 {h:"上午", items:["09:00 火爐監獄（08:00–17:00，建議租語音導覽，約 1.5 小時）","11:30 河內歌劇院（法式建築，外觀拍照）"]},
-{h:"下午", items:["同春市場買伴手禮（16:00 後陸續收攤）"]},
+{h:"下午", items:["同春市場買伴手禮（16:00 後陸續收攤）","🛍️ Hàng Gai 絲綢街：絲巾、睡衣"]},
 {h:"晚上", items:["最後一晚，回飯店打包"]}
 ],
 note:"週一陵寢、博物館都休館，所以排這幾個週一有開的點"
@@ -1015,7 +1041,7 @@ tag:"回程", tagColor:"var(--rust)", hotel:"回程（記得退房）",
 maps:[{label:"內排國際機場", query:"Noi Bai International Airport Terminal 2"}],
 body:[
 {h:"航班", items:["JX716 星宇航空 13:05 河內內排(T2) → 16:45 台北桃園(T2)，飛行 2 小時 40 分"]},
-{h:"上午", items:["飯店附近吃一碗河粉當早餐","10:00 從飯店出發（Grab 約 45–60 分鐘）","11:00 前到機場報到"]}
+{h:"上午", items:["🍜 最後一頓：飯店附近吃河粉或 Bánh Mì 25","10:00 從飯店出發（Grab 約 45–60 分鐘）","11:00 前到機場報到"]}
 ],
 note:"這天不排景點，伴手禮前一天買完"
 },
@@ -1196,7 +1222,7 @@ if(tripMap) tripMap.invalidateSize();
 });
 
 /* ---------------- MAP ---------------- */
-const C = {old:"#B3262E", badinh:"#1E5A44", bay:"#2A7486", museum:"#B8902F"};
+const C = {old:"#B3262E", badinh:"#1E5A44", bay:"#2A7486", museum:"#B8902F", shop:"#7A4FA0", food:"#D9772B"};
 const mapPoints = [
 {name:"內排國際機場 T2", day:"12/23 · 12/29", color:C.old, lat:21.2187, lng:105.8042, note:"去回程都在第 2 航廈", region:"hanoi", query:"Noi Bai International Airport Terminal 2"},
 {name:"還劍湖", day:"12/23", color:C.old, lat:21.0288, lng:105.8525, note:"河內市中心，週末是行人徒步區", region:"hanoi", query:"Hoan Kiem Lake Hanoi"},
@@ -1214,15 +1240,27 @@ const mapPoints = [
 {name:"火爐監獄", day:"12/28", color:C.old, lat:21.0253297, lng:105.8464781, note:"08:00–17:00", region:"hanoi", query:"Hoa Lo Prison Relic"},
 {name:"河內歌劇院", day:"12/28", color:C.old, lat:21.0242501, lng:105.8576249, note:"法式建築", region:"hanoi", query:"Hanoi Opera House"},
 {name:"同春市場", day:"12/28", color:C.old, lat:21.0381434, lng:105.8500387, note:"伴手禮，16:00 後收攤", region:"hanoi", query:"Dong Xuan Market Hanoi"},
+{name:"Star Kitchen 星廚", day:"12/27", color:C.shop, kind:"eat", lat:21.0333612, lng:105.8461411, note:"伴手禮，09:00–21:00", region:"hanoi", query:"Star Kitchen Souvenir Gift Shop 15B Duong Thanh Hanoi"},
+{name:"火車街", day:"12/27", color:C.shop, kind:"eat", lat:21.0323308, lng:105.845141, note:"先預約咖啡店座位", region:"hanoi", query:"Train Street Hanoi coffee 2 Tran Phu"},
+{name:"Hàng Da 市場", day:"12/27", color:C.shop, kind:"eat", lat:21.0314824, lng:105.8463316, note:"陶瓷、乾貨", region:"hanoi", query:"Cho Hang Da Hanoi"},
+{name:"Hàng Mã 聖誕街", day:"12/26", color:C.shop, kind:"eat", lat:21.036442, lng:105.848498, note:"聖誕裝飾，要殺價", region:"hanoi", query:"Cho Hang Ma 12 Hang Ma Hanoi"},
+{name:"Hàng Gai 絲綢街", day:"12/28", color:C.shop, kind:"eat", lat:21.0315985, lng:105.8493733, note:"Hadong Silk 102 號", region:"hanoi", query:"Hadong Silk 102 Hang Gai Hanoi"},
+{name:"Phở Bát Đàn", day:"12/24 早餐", color:C.food, kind:"eat", lat:21.0336237, lng:105.8465147, note:"06:00–11:00、17:00–21:30", region:"hanoi", query:"Pho Gia Truyen 49 Bat Dan Hanoi"},
+{name:"Bánh Mì 25", day:"12/26", color:C.food, kind:"eat", lat:21.036113, lng:105.848577, note:"07:00–21:00", region:"hanoi", query:"Banh Mi 25 Hang Ca Hanoi"},
+{name:"Bún Chả Đắc Kim", day:"12/26", color:C.food, kind:"eat", lat:21.0322493, lng:105.8482095, note:"老字號烤肉米線", region:"hanoi", query:"Bun Cha Dac Kim 1 Hang Manh Hanoi"},
+{name:"Bún chả Cội", day:"12/23", color:C.food, kind:"eat", lat:21.0329742, lng:105.8546148, note:"湖東邊，有套餐", region:"hanoi", query:"Bun cha Coi 57 Nguyen Huu Huan Hanoi"},
+{name:"Sen Tràng An", day:"12/23", color:C.food, kind:"eat", lat:21.032733, lng:105.8538665, note:"有冷氣的越南菜", region:"hanoi", query:"Sen Trang An 47B Hang Be Hanoi"},
+{name:"Café Giảng", day:"12/23", color:C.food, kind:"eat", lat:21.0334664, lng:105.854518, note:"蛋咖啡老店", region:"hanoi", query:"Cafe Giang 39 Nguyen Huu Huan Hanoi"},
+{name:"Cộng Cà Phê 大教堂", day:"12/24", color:C.food, kind:"eat", lat:21.0288138, lng:105.8496411, note:"椰子咖啡", region:"hanoi", query:"Cong Cafe Nha Tho 27 Nha Tho Hanoi"},
 ];
 
 const dayGroups = [
-{date:"12/23", title:"抵達河內", color:C.old, points:["內排國際機場 T2","還劍湖","玉山祠","老城區 36 古街"]},
-{date:"12/24", title:"巴亭區＋西湖", color:C.badinh, points:["胡志明陵寢","一柱廟","文廟","鎮國寺","河內大教堂"]},
+{date:"12/23", title:"抵達河內", color:C.old, points:["內排國際機場 T2","還劍湖","玉山祠","老城區 36 古街","Bún chả Cội","Café Giảng"]},
+{date:"12/24", title:"巴亭區＋西湖", color:C.badinh, points:["Phở Bát Đàn","胡志明陵寢","一柱廟","文廟","鎮國寺","河內大教堂","Cộng Cà Phê 大教堂"]},
 {date:"12/25", title:"下龍灣 Day 1", color:C.bay, points:["下龍灣"]},
-{date:"12/26", title:"下龍灣 → 河內週末夜", color:C.bay, points:["下龍灣","昇龍水上木偶劇院","同春夜市"]},
-{date:"12/27", title:"民族學博物館＋彈性時間", color:C.museum, points:["越南民族學博物館","同春夜市"]},
-{date:"12/28", title:"火爐監獄＋法式街區", color:C.old, points:["火爐監獄","河內歌劇院","同春市場"]},
+{date:"12/26", title:"下龍灣 → 河內週末夜", color:C.bay, points:["下龍灣","昇龍水上木偶劇院","同春夜市","Hàng Mã 聖誕街","Bánh Mì 25"]},
+{date:"12/27", title:"民族學博物館＋彈性時間", color:C.museum, points:["越南民族學博物館","Star Kitchen 星廚","火車街","Hàng Da 市場","同春夜市"]},
+{date:"12/28", title:"火爐監獄＋法式街區", color:C.old, points:["火爐監獄","河內歌劇院","同春市場","Hàng Gai 絲綢街"]},
 {date:"12/29", title:"河內 → 回台", color:C.old, points:["內排國際機場 T2"]},
 ];
 
@@ -1289,6 +1327,7 @@ marker.bindPopup(
 `<div class="popup-day">${p.day}</div><div class="popup-title">${p.name}</div>${p.note?`<div class="popup-note">${p.note}</div>`:''}<div class="popup-note" style="margin-top:6px;"><a href="${gmapUrl(p)}" target="_blank" rel="noopener" style="color:var(--sky-deep);">📍 在 Google Map 開啟</a></div>`
 );
 marker.regionTag = p.region;
+marker.kindTag = p.kind || '';
 marker.pointName = p.name;
 mapMarkers.push(marker);
 });
@@ -1304,7 +1343,7 @@ fitToRegion(btn.dataset.view);
 
 function fitToRegion(view){
 if(!tripMap) return;
-let pts = view==='all' ? mapMarkers : mapMarkers.filter(m=>m.regionTag===view);
+let pts = view==='all' ? mapMarkers : view==='eat' ? mapMarkers.filter(m=>m.kindTag==='eat') : mapMarkers.filter(m=>m.regionTag===view);
 if(view==='hanoi') pts = pts.filter(m=>m.pointName!=='內排國際機場 T2');
 if(!pts.length) return;
 if(pts.length===1){ tripMap.setView(pts[0].getLatLng(), 10); return; }
