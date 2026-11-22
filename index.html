@@ -957,7 +957,7 @@ transition:opacity .2s, transform .2s;z-index:50;}
 </main>
 
 <footer style="text-align:center;font-size:11px;color:var(--ink-soft);padding:8px 0 12px;">
-行程手冊 v1.6 ・ 更新於 2026-11-22 10:30（台北時間）
+行程手冊 v1.7 ・ 更新於 2026-11-22 10:50（台北時間）
 </footer>
 
 <script>
@@ -979,12 +979,11 @@ body:[
 note:"第一天不要排太滿，抵達時間會受入境排隊影響"
 },
 {
-date:"12/24", iso:"2026-12-24", week:"四", title:"巴亭區＋西湖", loc:"胡志明陵寢・文廟・鎮國寺",
+date:"12/24", iso:"2026-12-24", week:"四", title:"巴亭區＋西湖", loc:"胡志明陵寢・一柱廟・鎮國寺",
 tag:"巴亭", tagColor:"var(--seoul-deep)", hotel:"第一段住宿（12/23–12/25）",
 maps:[
 {label:"胡志明陵寢", query:"Ho Chi Minh Mausoleum"},
 {label:"一柱廟", query:"One Pillar Pagoda Hanoi"},
-{label:"文廟", query:"Temple of Literature Hanoi"},
 {label:"鎮國寺", query:"Tran Quoc Pagoda"},
 {label:"河內大教堂", query:"St. Joseph's Cathedral Hanoi"}
 ],
@@ -996,9 +995,9 @@ body:[
 "08:00 安檢 → 寄放大包包 → 排成一列入內瞻仰（裡面只走幾分鐘）",
 "09:00 出來後依序逛：主席府花園（外觀）→ 胡志明高腳屋（40,000 越盾）→ 一柱廟（免費）",
 "（選配）胡志明博物館 40,000 越盾",
-"10:45 Grab 到文廟（約 5 分鐘；08:00–17:00，約 1 小時）"
+"10:45 叫 Grab 回老城區（約 10 分鐘），吃午餐、回飯店休息（早起排隊後剛好補眠）"
 ]},
-{h:"下午", items:["午餐＋休息","15:30 鎮國寺（中午 11:00–13:30 休息，下午開到 17:00）","西湖邊看夕陽"]},
+{h:"下午", items:["15:10 從老城區叫 Grab 去鎮國寺（約 15 分鐘）","15:30 鎮國寺（中午 11:00–13:30 休息，下午開到 17:00）","西湖邊看夕陽"]},
 {h:"晚上", items:["🎄 平安夜：河內大教堂一帶會很熱鬧，人多注意隨身物品","🛍️ LaboOn 棉麻服飾（大教堂旁，開到 21:30）","☕ Cộng Cà Phê 大教堂店：窗邊看教堂，喝椰子咖啡"]}
 ],
 note:"陵寢服裝：長褲／過膝裙、有袖上衣、包鞋；進去前脫帽、拿下墨鏡。不能帶食物飲料，手機要關機，裡面禁止拍照。詳細看「資訊 → 胡志明陵寢攻略」"
@@ -1253,7 +1252,6 @@ const mapPoints = [
 {name:"老城區 36 古街", day:"12/23", color:C.old, lat:21.034059, lng:105.8506368, note:"建議住這一區", region:"hanoi", query:"Hanoi Old Quarter"},
 {name:"胡志明陵寢", day:"12/24", color:C.badinh, lat:21.0368973, lng:105.8346667, note:"12月平日 08:00–11:00，週一、五休；入口 17 Ngọc Hà", region:"hanoi", query:"17 Ngoc Ha Ba Dinh Hanoi"},
 {name:"一柱廟", day:"12/24", color:C.badinh, lat:21.0358725, lng:105.8336273, note:"陵寢旁", region:"hanoi", query:"One Pillar Pagoda Hanoi"},
-{name:"文廟", day:"12/24", color:C.badinh, lat:21.0281175, lng:105.8356692, note:"08:00–17:00", region:"hanoi", query:"Temple of Literature Hanoi"},
 {name:"鎮國寺", day:"12/24", color:C.badinh, lat:21.047871, lng:105.8368738, note:"西湖邊，中午休息", region:"hanoi", query:"Tran Quoc Pagoda"},
 {name:"河內大教堂", day:"12/24", color:C.badinh, lat:21.0287, lng:105.8489, note:"平安夜很熱鬧", region:"hanoi", query:"St. Joseph's Cathedral Hanoi"},
 {name:"下龍灣", day:"12/25–12/26", color:C.bay, lat:20.9101, lng:107.1839, note:"遊輪過夜", region:"halong", query:"Ha Long Bay"},
@@ -1282,7 +1280,7 @@ const mapPoints = [
 
 const dayGroups = [
 {date:"12/23", title:"抵達河內", color:C.old, points:["內排國際機場 T2","還劍湖","玉山祠","老城區 36 古街","Bún chả Cội","Café Giảng"]},
-{date:"12/24", title:"巴亭區＋西湖", color:C.badinh, points:["Phở Bát Đàn","胡志明陵寢","一柱廟","文廟","鎮國寺","河內大教堂","LaboOn","Cộng Cà Phê 大教堂"]},
+{date:"12/24", title:"巴亭區＋西湖", color:C.badinh, points:["Phở Bát Đàn","胡志明陵寢","一柱廟","鎮國寺","河內大教堂","LaboOn","Cộng Cà Phê 大教堂"]},
 {date:"12/25", title:"下龍灣 Day 1", color:C.bay, points:["下龍灣"]},
 {date:"12/26", title:"下龍灣 → 河內週末夜", color:C.bay, points:["下龍灣","昇龍水上木偶劇院","同春夜市","Hàng Mã 聖誕街","Bánh Mì 25"]},
 {date:"12/27", title:"民族學博物館＋逛街日", color:C.museum, points:["越南民族學博物館","Lotte Mall West Lake","Star Kitchen 星廚","火車街","Hàng Da 市場","同春夜市"]},
